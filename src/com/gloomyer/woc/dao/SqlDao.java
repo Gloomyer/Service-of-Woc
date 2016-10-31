@@ -2,6 +2,7 @@ package com.gloomyer.woc.dao;
 
 import com.gloomyer.woc.model.ArticleModel;
 import com.gloomyer.woc.model.CategoryModel;
+import com.gloomyer.woc.model.FileModel;
 import com.gloomyer.woc.utils.JDBCUtils;
 
 import java.sql.Connection;
@@ -192,4 +193,70 @@ public class SqlDao {
     }
 
 
+    public boolean addFileInfoToDatabase(FileModel file) {
+        Connection conn = JDBCUtils.getConn();
+        PreparedStatement pst = null;
+        boolean result = false;
+        if (conn != null) {
+            try {
+                pst = conn.prepareStatement("INSERT INTO t_file(uuid,name,file) VALUES (?, ?, ?);");
+                pst.setString(1, file.getUuid());
+                pst.setString(2, file.getFileName());
+                pst.setString(3, file.getFilePath());
+                int line = pst.executeUpdate();
+                if (line > 0)
+                    result = true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        JDBCUtils.close(conn, pst, null);
+        return result;
+    }
+
+    public boolean addArticle(int cId, String title, String desc, String img, String uuid) {
+
+        Connection conn = JDBCUtils.getConn();
+        PreparedStatement pst = null;
+        boolean result = false;
+        if (conn != null) {
+            try {
+                pst = conn.prepareStatement("INSERT INTO t_article(categoryId,title,c_desc,img,file) VALUES (?, ?, ?, ?, ?);");
+                pst.setInt(1, cId);
+                pst.setString(2, title);
+                pst.setString(3, desc);
+                pst.setString(4, img);
+                pst.setString(5, uuid);
+                int line = pst.executeUpdate();
+                if (line > 0)
+                    result = true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        JDBCUtils.close(conn, pst, null);
+        return result;
+    }
+
+    public boolean deleteFile(String uuid) {
+        Connection conn = JDBCUtils.getConn();
+        PreparedStatement pst = null;
+        boolean result = false;
+        if (conn != null) {
+            try {
+                pst = conn.prepareStatement("DELETE FROM t_file WHERE uuid = ?;");
+                pst.setString(1, uuid);
+                int line = pst.executeUpdate();
+                if (line > 0)
+                    result = true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        JDBCUtils.close(conn, pst, null);
+        return result;
+    }
 }

@@ -1,16 +1,23 @@
 package com.gloomyer.woc.servlet;
 
 import com.gloomyer.woc.dao.SqlDao;
+import com.gloomyer.woc.model.FileModel;
 import com.gloomyer.woc.utils.JsonUtils;
 import com.gloomyer.woc.utils.PasswordUtils;
 import com.gloomyer.woc.utils.TextUtils;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Woc后端服务
@@ -185,5 +192,121 @@ public class WocServlet extends HttpServlet {
         }
     }
 
+
+    /**
+     * 添加文章
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void addArticle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String pwd = request.getParameter("pwd");
+        String title = request.getParameter("title");//文章标题
+        String desc = request.getParameter("desc");//文章描述
+        String img = request.getParameter("img");//文章图片地
+
+        int cId = -1;
+        try {
+            cId = Integer.parseInt(request.getParameter("cId"));
+        } catch (Exception e) {
+            cId = -1;
+        }
+
+        if (TextUtils.isEmpty(pwd)
+                || TextUtils.isEmpty(title)
+                || TextUtils.isEmpty(desc)
+                || TextUtils.isEmpty(img)
+                || cId == -1) {
+            JsonUtils.wrtiteJson(response, 201, false, "参数不正确!");
+            return;
+        }
+
+
+        if (!PasswordUtils.isExactness(pwd)) {
+            JsonUtils.wrtiteJson(response, 202, false, "管理密码不正确!");
+            return;
+        }
+
+        // 创建硬盘文件项工厂
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        // 创建Servlet 文件上传项
+        ServletFileUpload uploadFile = new ServletFileUpload(factory);
+        // 全局化filePath,方便上传失败后的操作
+        File filePath = null;
+        // 判断上传的是否是 multipart/form-data 类型数据
+        if (uploadFile.isMultipartContent(request)) {
+            try {
+                // 获取到上传的文件map集合
+                Map<String, List<FileItem>> fileMap = uploadFile.parseParameterMap(request);
+                // 获取file指向的文件
+                List<FileItem> fileList = fileMap.get("mdFile");
+                if (fileList == null || fileList.size() < 1) { //没有上传文件
+                    JsonUtils.wrtiteJson(response, 201, false, "参数不正确!");
+                    return;
+                }
+                FileItem fileItem = fileList.get(0);
+
+                // 创建一个uuid,作为该文件的唯一标示
+                String uuid = UUID.randomUUID().toString();
+                // 获取上传资源的文件名
+                String fileName = fileItem.getName();
+                // 根据文件名获取hashCode
+                String hash = Math.abs(fileName.hashCode()) + "";
+                // 获取资源存放路径,并且进行hash打散
+                File uploadDir = new File(getServletContext().getRealPath("WEB-INF") + "/files/");
+                uploadDir = new File(uploadDir, "/" + hash.charAt(0) + "/" + hash.charAt(1) + "/");
+                // 如果资源存放路径不存在,就创建资源路径
+                if (!uploadDir.exists())
+                    uploadDir.mkdirs();
+                // 设置要写出的完整路径(加上uuid避免文件重复问题)
+                filePath = new File(uploadDir, uuid + "_" + fileName);
+                // 获取输入流
+                InputStream is = fileItem.getInputStream();
+                // 写出文件
+                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
+                byte[] buffer = new byte[1024];
+                int len;
+                while ((len = is.read(buffer)) != -1) {
+                    bos.write(buffer, 0, len);
+                }
+                // 释放资源
+                is.close();
+                bos.flush();
+                bos.close();
+                // 封装成 FileInfo对象,存入数据库中
+                FileModel file = new FileModel(uuid, fileName, filePath.getAbsolutePath());
+                boolean result = SqlDao.getInstance().addFileInfoToDatabase(file);
+                if (result) {
+                    // 添加成功
+                    if (result) {
+                        result = SqlDao.getInstance().addArticle(cId, title, desc, img, uuid);
+                        if (result) {
+                            //如果成功
+                            JsonUtils.wrtiteJson(response, 200, true, "文章发布成功!");
+                            SqlDao.isNew = false;
+                            return;
+                        } else {
+                            SqlDao.getInstance().deleteFile(uuid);
+                        }
+                    }
+                }
+                //如果成功不会跑到这里
+                JsonUtils.wrtiteJson(response, 203, false, "文件上传失败!");
+                //如果文件已经存在，需要删除
+                if (filePath != null && filePath.exists())
+                    filePath.delete();
+            } catch (Exception e) {
+                // 如果出现异常,那么就表示上传失败,那么判断上传的文件是否已经生成,如果已经生成,就删除他
+                JsonUtils.wrtiteJson(response, 203, false, "文件上传失败!");
+                if (filePath != null && filePath.exists())
+                    filePath.delete();
+                e.printStackTrace();
+            }
+        } else {
+            JsonUtils.wrtiteJson(response, 201, false, "参数不正确!");
+        }
+    }
 
 }
