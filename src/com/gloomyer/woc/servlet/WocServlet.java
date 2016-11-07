@@ -181,7 +181,6 @@ public class WocServlet extends HttpServlet {
                 JsonUtils.wrtiteJson(response, result ? 200 : 203, result, result ? "删除文章成功!" : "分类文章失败!");
                 if (result) {
                     SqlDao.isNew = false;
-                    //TODO 删除文章md文件
                 }
             } catch (Exception e) {
                 JsonUtils.wrtiteJson(response, 201, false, "参数不正确!");

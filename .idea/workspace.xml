@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f7412e6-c069-443c-af08-c47f0abf0880" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/libs/commons-fileupload-1.3.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/libs/commons-io-2.5.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/commons_fileupload_1_3_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/gloomyer/woc/model/FileModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WocService_war_exploded/WEB-INF/classes/com/gloomyer/woc/dao/SqlDao.class" afterPath="$PROJECT_DIR$/out/artifacts/WocService_war_exploded/WEB-INF/classes/com/gloomyer/woc/dao/SqlDao.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WocService_war_exploded/WEB-INF/classes/com/gloomyer/woc/servlet/WocServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/WocService_war_exploded/WEB-INF/classes/com/gloomyer/woc/servlet/WocServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WocService/com/gloomyer/woc/dao/SqlDao.class" afterPath="$PROJECT_DIR$/out/production/WocService/com/gloomyer/woc/dao/SqlDao.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WocService/com/gloomyer/woc/servlet/WocServlet.class" afterPath="$PROJECT_DIR$/out/production/WocService/com/gloomyer/woc/servlet/WocServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WocService.iml" afterPath="$PROJECT_DIR$/WocService.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gloomyer/woc/dao/SqlDao.java" afterPath="$PROJECT_DIR$/src/com/gloomyer/woc/dao/SqlDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java" afterPath="$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java" />
     </list>
@@ -47,8 +42,8 @@
       <file leaf-file-name="WocServlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="205" column="59" selection-start-line="205" selection-start-column="59" selection-end-line="205" selection-end-column="59" />
+            <state relative-caret-position="220">
+              <caret line="299" column="63" selection-start-line="299" selection-start-column="63" selection-end-line="299" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -145,8 +140,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -303,9 +299,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WocService" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WocService" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -782,12 +791,17 @@
       <workItem from="1477547736978" duration="5458000" />
       <workItem from="1477568009525" duration="3667000" />
       <workItem from="1477635770728" duration="4369000" />
-      <workItem from="1477878195686" duration="1010000" />
+      <workItem from="1477878195686" duration="3094000" />
+      <workItem from="1477967598481" duration="453000" />
+      <workItem from="1478065616172" duration="40000" />
+      <workItem from="1478065701208" duration="424000" />
+      <workItem from="1478177165007" duration="230000" />
+      <workItem from="1478511069836" duration="804000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22524000" />
+    <option name="totallyTimeSpent" value="26559000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1415" height="877" extended-state="0" />
@@ -843,6 +857,36 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1059,7 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="229" column="48" selection-start-line="229" selection-start-column="48" selection-end-line="229" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1114,7 +1157,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="38" column="11" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1122,7 +1164,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="378" column="48" selection-start-line="378" selection-start-column="48" selection-end-line="378" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1130,10 +1171,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="1181" column="22" selection-start-line="1181" selection-start-column="22" selection-end-line="1181" selection-end-column="22" />
-          <folding>
-            <element signature="e#46227#46228#0" expanded="true" />
-            <element signature="e#46266#46267#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1142,35 +1179,44 @@
         <state relative-caret-position="180">
           <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
           <folding>
-            <element signature="e#673#674#0" expanded="true" />
-            <element signature="e#704#705#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="false" />
+            <element signature="e#704#705#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/dao/SqlDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="236" column="9" selection-start-line="236" selection-start-column="9" selection-end-line="236" selection-end-column="9" />
+        <state relative-caret-position="253">
+          <caret line="253" column="27" selection-start-line="253" selection-start-column="27" selection-end-line="253" selection-end-column="27" />
           <folding>
-            <marker date="1477894499000" expanded="true" signature="1203:1227" ph="select * fro... t_category" />
-            <marker date="1477894499000" expanded="true" signature="2035:2077" ph="select * fro... t_article" />
-            <marker date="1477894499000" expanded="true" signature="2035:2078" ph="select * fro... t_article" />
-            <marker date="1477894499000" expanded="true" signature="3363:3402" ph="INSERT INTO t_category... " />
-            <marker date="1477894499000" expanded="true" signature="3988:4024" ph="DELETE FROM " />
-            <marker date="1477894499000" expanded="true" signature="4617:4662" ph="UPDATE t_cat... " />
-            <marker date="1477894499000" expanded="true" signature="5282:5316" ph="DELETE FROM " />
-            <marker date="1477894499000" expanded="true" signature="5912:5963" ph="INSERT INTO t_file... " />
-            <marker date="1477894499000" expanded="true" signature="6714:6792" ph="INSERT INTO t_article... " />
-            <marker date="1477894499000" expanded="true" signature="7532:7565" ph="DELETE FROM " />
+            <marker date="1478511649000" expanded="true" signature="1203:1227" ph="select * fro... t_category" />
+            <marker date="1478511649000" expanded="true" signature="2035:2077" ph="select * fro... t_article" />
+            <marker date="1478511649000" expanded="true" signature="2035:2078" ph="select * fro... t_article" />
+            <marker date="1478511649000" expanded="true" signature="3363:3402" ph="INSERT INTO t_category... " />
+            <marker date="1478511649000" expanded="true" signature="3988:4024" ph="DELETE FROM " />
+            <marker date="1478511649000" expanded="true" signature="4617:4662" ph="UPDATE t_cat... " />
+            <marker date="1478511649000" expanded="true" signature="5282:5319" ph="SELECT * FRO... t_article" />
+            <marker date="1478511649000" expanded="true" signature="5609:5643" ph="DELETE FROM " />
+            <marker date="1478511649000" expanded="true" signature="6239:6290" ph="INSERT INTO t_file... " />
+            <marker date="1478511649000" expanded="true" signature="7041:7119" ph="INSERT INTO t_article... " />
+            <marker date="1478511649000" expanded="true" signature="7859:7892" ph="DELETE FROM " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="205" column="59" selection-start-line="205" selection-start-column="59" selection-end-line="205" selection-end-column="59" />
+        <state relative-caret-position="220">
+          <caret line="299" column="63" selection-start-line="299" selection-start-column="63" selection-end-line="299" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

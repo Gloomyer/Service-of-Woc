@@ -177,6 +177,13 @@ public class SqlDao {
         boolean result = false;
         if (conn != null) {
             try {
+                pst = conn.prepareStatement("SELECT * FROM t_article WHERE  id = ?;");
+                pst.setInt(1, aId);
+                ResultSet rs = pst.executeQuery();
+                if (rs.next()) {
+                    deleteFile(rs.getString("file"));
+                }
+                JDBCUtils.close(null, pst, rs);
                 pst = conn.prepareStatement("DELETE FROM t_article WHERE id = ?;");
                 pst.setInt(1, aId);
 
