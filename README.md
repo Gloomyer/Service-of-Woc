@@ -2,7 +2,7 @@
 
 接口只有一个
 
-http://服务器地址:服务器服务端口/servlet/WocServlet
+http://gloomyer.com/woc/servlet/WocServlet
 
 通过指定不同的method，去执行对应的方法操作。
 
@@ -37,13 +37,13 @@ http://服务器地址:服务器服务端口/servlet/WocServlet
 
 ####  获取所有的文章列表  ####
 
-http://服务器地址:服务器服务端口/servlet/WocServlet
+http://gloomyer.com/woc/servlet/WocServlet
 
 请求方式：POST
 
 | 需求参数   | 参数类型   | 参数说明      | 是否必须 |
 | ------ | ------ | --------- | ---- |
-| method | String | 恒定为:index | 否    |
+| method | String | 恒定为:index | 是    |
 
 返回样例(成功):
 
@@ -82,7 +82,7 @@ http://服务器地址:服务器服务端口/servlet/WocServlet
 
 接口地址:
 
-http://服务器地址:服务器服务端口/servlet/WocServlet
+http://gloomyer.com/woc/servlet/WocServlet
 
 请求方式：POST
 
@@ -91,3 +91,168 @@ http://服务器地址:服务器服务端口/servlet/WocServlet
 | method | String | 恒定为:addCategory | 是    |
 | pwd    | String | 管理员密码           | 是    |
 | cName  | String | 分类名称            | 是    |
+
+返回样例(成功):
+
+```json
+{
+  "statusCode":200,
+  "success":true,
+  "message":"添加分类成功!"
+}
+```
+
+返回样例(失败):
+
+```json
+{
+  "statusCode":202,
+  "success":false,
+  "message":"管理密码不正确!"
+}
+```
+
+####  删除分类  ####
+
+接口地址:
+
+http://gloomyer.com/woc/servlet/WocServlet
+
+请求方式：POST
+
+| 需求参数   | 参数类型   | 参数说明               | 是否必须 |
+| ------ | ------ | ------------------ | ---- |
+| method | String | 恒定为:deleteCategory | 是    |
+| pwd    | String | 管理员密码              | 是    |
+| cId    | String | 分类id               | 是    |
+
+返回样例(成功):
+
+```json
+{
+  "statusCode":200,
+  "success":true,
+  "message":"删除分类成功!"
+}
+```
+
+返回样例(失败):
+
+```json
+{
+  "statusCode":203,
+  "success":false,
+  "message":"分类删除失败!"
+}
+```
+
+#### 编辑分类
+
+接口地址:
+
+http://gloomyer.com/woc/servlet/WocServlet
+
+请求方式：POST
+
+| 需求参数   | 参数类型   | 参数说明             | 是否必须 |
+| ------ | ------ | ---------------- | ---- |
+| method | String | 恒定为:editCategory | 是    |
+| pwd    | String | 管理员密码            | 是    |
+| cId    | String | 分类id             | 是    |
+| cName  | String | 分类新名称            | 是    |
+
+返回样例(成功):
+
+```json
+{
+  "statusCode":200,
+  "success":true,
+  "message":"编辑分类成功!"
+}
+```
+
+返回样例(失败):
+
+```json
+{
+  "statusCode":203,
+  "success":false,
+  "message":"分类删除失败!"
+}
+```
+
+
+
+#### 添加文章
+
+接口地址:
+
+http://gloomyer.com/woc/servlet/WocServlet
+
+请求方式：POST
+
+| 需求参数   | 参数类型               | 参数说明           | 是否必须 |
+| ------ | ------------------ | -------------- | ---- |
+| method | String             | 恒定为:addArticle | 是    |
+| pwd    | String             | 管理员密码          | 是    |
+| desc   | String             | 文章的简单描述        | 是    |
+| img    | String             | 文章的封面图Url      | 是    |
+| mdFile | multipart/form-dat | 文章             | 是    |
+
+返回样例(成功):
+
+```json
+{
+  "statusCode":200,
+  "success":true,
+  "message":"文章发布成功!"
+}
+```
+
+返回样例(失败):
+
+```json
+{
+  "statusCode":203,
+  "success":false,
+  "message":"文件上传失败!"
+}
+```
+
+
+
+#### 删除文章
+
+接口地址:
+
+http://gloomyer.com/woc/servlet/WocServlet
+
+请求方式：POST
+
+| 需求参数   | 参数类型   | 参数说明              | 是否必须 |
+| ------ | ------ | ----------------- | ---- |
+| method | String | 恒定为:deleteArticle | 是    |
+| pwd    | String | 管理员密码             | 是    |
+| aId    | String | 要删除的文章id          | 是    |
+
+返回样例(成功):
+
+```json
+{
+  "statusCode":200,
+  "success":true,
+  "message":"删除文章成功!"
+}
+```
+
+返回样例(失败):
+
+```json
+{
+  "statusCode":203,
+  "success":false,
+  "message":"分类文章失败!"
+}
+```
+
+#### 
