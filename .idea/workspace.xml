@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f7412e6-c069-443c-af08-c47f0abf0880" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WocService_war_exploded/WEB-INF/classes/com/gloomyer/woc/servlet/WocServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/WocService_war_exploded/WEB-INF/classes/com/gloomyer/woc/servlet/WocServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WocService/com/gloomyer/woc/servlet/WocServlet.class" afterPath="$PROJECT_DIR$/out/production/WocService/com/gloomyer/woc/servlet/WocServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WocService_war_exploded/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WocService_war_exploded/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java" afterPath="$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/web/index.jsp" />
     </list>
     <ignored path="WocService.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,24 +37,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WocServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java">
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-125">
-              <caret line="180" column="104" selection-start-line="180" selection-start-column="97" selection-end-line="180" selection-end-column="104" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="216">
+              <caret line="145" column="45" selection-start-line="145" selection-start-column="45" selection-end-line="145" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="WocServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="355">
+              <caret line="150" column="46" selection-start-line="150" selection-start-column="43" selection-end-line="150" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,12 +79,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/utils/TextUtils.java" />
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/WocServlet.java" />
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/utils/GsonUtils.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/password.pwd" />
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/utils/PasswordUtils.java" />
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/dao/CategoryModel.java" />
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/model/ResultModel.java" />
@@ -87,11 +90,13 @@
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/utils/JsonUtils.java" />
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/model/ArticleModel.java" />
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/model/FileModel.java" />
-        <option value="$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java" />
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/dao/SqlDao.java" />
         <option value="$PROJECT_DIR$/src/com/gloomyer/woc/utils/JDBCUtils.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jdbc.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/password.pwd" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
       </list>
     </option>
   </component>
@@ -146,6 +151,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -261,7 +267,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -747,12 +752,15 @@
       <workItem from="1478511069836" duration="1210000" />
       <workItem from="1478512349657" duration="1980000" />
       <workItem from="1478606577464" duration="1328000" />
-      <workItem from="1478754389627" duration="1195000" />
+      <workItem from="1478754389627" duration="1860000" />
+      <workItem from="1479106999080" duration="7144000" />
+      <workItem from="1479127938465" duration="538000" />
+      <workItem from="1479192841610" duration="489000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31468000" />
+    <option name="totallyTimeSpent" value="40304000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1415" height="877" extended-state="0" />
@@ -767,8 +775,8 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920793" sideWeight="0.4975265" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32920793" sideWeight="0.49469966" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32920793" sideWeight="0.4975265" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920793" sideWeight="0.49469966" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24946997" sideWeight="0.49261993" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946997" sideWeight="0.50738007" order="2" side_tool="true" content_ui="tabs" />
@@ -808,6 +816,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4320">
@@ -1030,14 +1046,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/web/libs/commons-fileupload-1.3.2.jar!/org/apache/commons/fileupload/servlet/ServletFileUpload.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1070,19 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="253" column="27" selection-start-line="253" selection-start-column="27" selection-end-line="253" selection-end-column="27" />
-          <folding>
-            <marker date="1478511649000" expanded="true" signature="1203:1227" ph="select * fro... t_category" />
-            <marker date="1478511649000" expanded="true" signature="2035:2077" ph="select * fro... t_article" />
-            <marker date="1478511649000" expanded="true" signature="2035:2078" ph="select * fro... t_article" />
-            <marker date="1478511649000" expanded="true" signature="3363:3402" ph="INSERT INTO t_category... " />
-            <marker date="1478511649000" expanded="true" signature="3988:4024" ph="DELETE FROM " />
-            <marker date="1478511649000" expanded="true" signature="4617:4662" ph="UPDATE t_cat... " />
-            <marker date="1478511649000" expanded="true" signature="5282:5319" ph="SELECT * FRO... t_article" />
-            <marker date="1478511649000" expanded="true" signature="5609:5643" ph="DELETE FROM " />
-            <marker date="1478511649000" expanded="true" signature="6239:6290" ph="INSERT INTO t_file... " />
-            <marker date="1478511649000" expanded="true" signature="7041:7119" ph="INSERT INTO t_article... " />
-            <marker date="1478511649000" expanded="true" signature="7859:7892" ph="DELETE FROM " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1115,13 +1110,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/woc.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/utils/PasswordUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1137,27 +1125,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/password.pwd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="3" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="2560" column="18" selection-start-line="2560" selection-start-column="18" selection-end-line="2560" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1165,7 +1136,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="489" column="31" selection-start-line="489" selection-start-column="31" selection-end-line="489" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1173,7 +1143,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="478">
           <caret line="137" column="72" selection-start-line="137" selection-start-column="54" selection-end-line="137" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1181,7 +1150,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
           <caret line="70" column="41" selection-start-line="70" selection-start-column="41" selection-end-line="70" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1193,20 +1161,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/woc.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gloomyer/woc/servlet/WocServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-125">
-          <caret line="180" column="104" selection-start-line="180" selection-start-column="97" selection-end-line="180" selection-end-column="104" />
+        <state relative-caret-position="355">
+          <caret line="150" column="46" selection-start-line="150" selection-start-column="43" selection-end-line="150" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/password.pwd">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+          <caret line="0" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="145" column="45" selection-start-line="145" selection-start-column="45" selection-end-line="145" selection-end-column="45" />
           <folding />
         </state>
       </provider>

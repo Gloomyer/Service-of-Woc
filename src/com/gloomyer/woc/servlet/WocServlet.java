@@ -1,6 +1,7 @@
 package com.gloomyer.woc.servlet;
 
 import com.gloomyer.woc.dao.SqlDao;
+import com.gloomyer.woc.model.CategoryModel;
 import com.gloomyer.woc.model.FileModel;
 import com.gloomyer.woc.utils.JsonUtils;
 import com.gloomyer.woc.utils.PasswordUtils;
@@ -62,6 +63,20 @@ public class WocServlet extends HttpServlet {
      */
     public void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JsonUtils.wrtiteJson(response, 200, true, "查询成功", SqlDao.getInstance().getAllInfo());
+    }
+
+
+    /**
+     * 查询分类
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void getCategorys(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<CategoryModel> categoryList = SqlDao.getInstance().getCateGorys();
+        JsonUtils.wrtiteJson(response, 200, true, "查询成功", categoryList);
     }
 
     /**
