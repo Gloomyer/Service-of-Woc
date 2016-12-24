@@ -61,10 +61,10 @@
                         }
                         var http = getXMLHttp();
                         http.open("POST", SERVER_URL + "?method=deleteCategory&cId="
-                                + cSelect.value
-                                + "&pwd="
-                                + pwd.pwd
-                                , true);
+                            + cSelect.value
+                            + "&pwd="
+                            + pwd.pwd
+                            , true);
                         http.onreadystatechange = function () {
                             if (http.readyState == 4 && http.status == 200) {
                                 var resp = eval('(' + http.responseText + ')')
@@ -100,10 +100,10 @@
 
             var http = getXMLHttp();
             http.open("POST", SERVER_URL + "?method=addCategory&cName="
-                    + cName
-                    + "&pwd="
-                    + pwd.pwd
-                    , true);
+                + cName
+                + "&pwd="
+                + pwd.pwd
+                , true);
             http.onreadystatechange = function () {
                 if (http.readyState == 4 && http.status == 200) {
                     var resp = eval('(' + http.responseText + ')')
@@ -140,11 +140,11 @@
                     if (cName) {
                         var http = getXMLHttp();
                         http.open("POST", SERVER_URL
-                                + "?method=editCategory"
-                                + "&pwd=" + pwd.pwd
-                                + "&cId=" + cSelect.value
-                                + "&cName=" + cName
-                                , true);
+                            + "?method=editCategory"
+                            + "&pwd=" + pwd.pwd
+                            + "&cId=" + cSelect.value
+                            + "&cName=" + cName
+                            , true);
                         http.onreadystatechange = function () {
                             if (http.readyState == 4 && http.status == 200) {
                                 var resp = eval('(' + http.responseText + ')')
@@ -165,6 +165,16 @@
             }
         }
 
+        function selectChange() {
+            var cSelect = document.getElementById("cSelect");
+            for (i = 0; i < cSelect.length; i++) {//下拉框的长度就是它的选项数.
+                if (cSelect[i].selected == true) {
+                    document.getElementById("hintSpan").innerHTML
+                        = " 该文章将被添加至分类: <font color='red' size='5'>" + cSelect[i].text + "</font>";
+                }
+            }
+        }
+
         /**
          * 获取所有分类并显示
          */
@@ -179,19 +189,20 @@
                         var list = categorys.result;
                         var cDiv = document.getElementById("category");
                         if (list != undefined && list.length > 0) {
-                            var html = "<select id='cSelect'>";
+                            var html = "<select onchange='selectChange()' id='cSelect'>";
                             for (var i = 0; i < list.length; i++) {
                                 //显示到document中去
                                 html += "<option value='"
-                                        + list[i].categoryId + "'>"
-                                        + list[i].categoryName
-                                        + "</option>";
+                                    + list[i].categoryId + "'>"
+                                    + list[i].categoryName
+                                    + "</option>";
 
                             }
                             html += "</select>"
-                                    + " <input type='button' value='删除' onclick='deleteCategory();'/>"
-                                    + " <input type='button' value='编辑' onclick='editCategory();' />";
+                                + " <input type='button' value='删除' onclick='deleteCategory();'/>"
+                                + " <input type='button' value='编辑' onclick='editCategory();' />";
                             cDiv.innerHTML = html;
+                            selectChange();
                         } else {
                             cDiv.innerHTML = "<font color='red'>暂无分类</font>";
                         }
@@ -201,10 +212,65 @@
             http.send();
         }
 
+        function upload() {
+            var pwd = getPwd();
+            if (!pwd.success) {
+                alert("请输入密码");
+                return
+            }
+
+            var aName = document.getElementById("aName");
+            if (!aName.value) {
+                alert("请输入文章标题!");
+                return
+            }
+            var aDesc = document.getElementById("aDesc");
+            if (!aDesc.value) {
+                alert("请输入文章描述!");
+                return
+            }
+            var aImg = document.getElementById("aImg");
+            if (!aImg.value) {
+                alert("请输入文章图片!");
+                return
+            }
+            var aFile = document.getElementById("aFile");
+            if (!aFile.value) {
+                alert("请选择文件路径!");
+                return
+            }
+
+
+            var http = getXMLHttp();
+            http.open("POST",
+                SERVER_URL + "?method=addArticle"
+                + "&pwd=" + pwd.pwd
+                + "&title=" + aName.value
+                + "&desc=" + aDesc.value
+                + "&img=" + aImg.value
+                + "&cId=0"
+                , true);
+            //http.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+
+            var fd = new FormData();
+            fd.append('mdFile', aFile.files[0]);
+            http.send(fd)
+        }
+
         window.onload = function () {
             getCategorys();
         };
     </script>
+    <style>
+        font {
+            font-size: 10px;
+        }
+
+        #article {
+            border: 1px solid red;
+            width: 400px;
+        }
+    </style>
 </head>
 <body>
 <h1>Woc Web 操作端</h1>
@@ -212,12 +278,29 @@
 <hr/>
 <h5>分类管理</h5><br/>
 <div>
-    <font size="2">添加分类</font>
+    <font>添加分类</font>
     <input id="cName" value="" type="text"/>
     <input value="确定" type="button" onclick="addCategory();"/>
 </div>
 <br/>
 <div id="category"></div>
+<hr/>
+<div>
+    <h5>文章管理</h5>
+    <div id="article">
+        <font style="font-size: 16px;">添加文章:</font>
+        &nbsp;&nbsp;&nbsp;
+        <span id="hintSpan">
+            该文章将被添加至分类:
+        </span>
+        <br/>
+        <font>文章标题:</font><input id="aName" type="text" style="width: 200px;"/><br/>
+        <font>文章描述:</font><textarea id="aDesc" style="height: 100px;width: 200px;"></textarea><br/>
+        <font>文章图片:</font><input id="aImg" type="text" style="width: 200px;"/><br/>
+        <font>文章md文件:</font><input id="aFile" type="file" style="width: 200px;"/><br/>
+        <button onclick="upload();">上传</button>
+    </div>
+</div>
 <hr/>
 </body>
 </html>
