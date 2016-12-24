@@ -170,7 +170,7 @@
             for (i = 0; i < cSelect.length; i++) {//下拉框的长度就是它的选项数.
                 if (cSelect[i].selected == true) {
                     document.getElementById("hintSpan").innerHTML
-                        = " 该文章将被添加至分类: <font color='red' size='5'>" + cSelect[i].text + "</font>";
+                        = " 该文章将被添加至分类: <font color='red''>" + cSelect[i].text + "</font>";
                 }
             }
         }
@@ -212,7 +212,7 @@
             http.send();
         }
 
-        function upload() {
+        function addArticle() {
             var pwd = getPwd();
             if (!pwd.success) {
                 alert("请输入密码");
@@ -248,13 +248,27 @@
                 + "&title=" + aName.value
                 + "&desc=" + aDesc.value
                 + "&img=" + aImg.value
-                + "&cId=0"
+                + "&cId=1"
                 , true);
-            //http.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+
+            http.onreadystatechange = function () {
+                if (http.readyState == 4 && http.status == 200) {
+                    //网络请求成功!
+                    var resp = eval('(' + http.responseText + ')')
+                    alert(resp.message);
+                    if (resp.success) {
+                        getArticles();
+                    }
+                }
+            }
 
             var fd = new FormData();
             fd.append('mdFile', aFile.files[0]);
             http.send(fd)
+        }
+
+        function getArticles() {
+
         }
 
         window.onload = function () {
@@ -298,7 +312,7 @@
         <font>文章描述:</font><textarea id="aDesc" style="height: 100px;width: 200px;"></textarea><br/>
         <font>文章图片:</font><input id="aImg" type="text" style="width: 200px;"/><br/>
         <font>文章md文件:</font><input id="aFile" type="file" style="width: 200px;"/><br/>
-        <button onclick="upload();">上传</button>
+        <button onclick="addArticle();">上传</button>
     </div>
 </div>
 <hr/>

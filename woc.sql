@@ -12,4 +12,4 @@ insert into t_article(categoryId,title,c_desc,img,file) values(1,"标题0-2","�
 insert into t_article(categoryId,title,c_desc,img,file) values(2,"标题1-1","描述1-1","图片1-1","文件1-1");
 insert into t_article(categoryId,title,c_desc,img,file) values(2,"标题1-2","描述1-2","图片1-2","文件1-2");
 
-create table t_file(uuid varchar(255) primary key, file varchar(255));
+create table t_file(uuid varchar(255) primary key, name VARCHAR(255), file varchar(255));

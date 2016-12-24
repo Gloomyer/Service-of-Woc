@@ -248,7 +248,7 @@
                 + "&title=" + aName.value
                 + "&desc=" + aDesc.value
                 + "&img=" + aImg.value
-                + "&cId=0"
+                + "&cId=1"
                 , true);
 
             http.onreadystatechange = function () {
