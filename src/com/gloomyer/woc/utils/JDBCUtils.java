@@ -2,11 +2,16 @@ package com.gloomyer.woc.utils;
 
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Iterator;
 
 /**
  * Created by Gloomy on 2016/10/27.
@@ -17,10 +22,41 @@ public class JDBCUtils {
     static {
         dataSource = new ComboPooledDataSource();
         try {
-//            dataSource.setDriverClass("com.mysql.jdbc.Driver");
-//            dataSource.setJdbcUrl("jdbc:mysql:///woc");
-//            dataSource.setUser("root");
-//            dataSource.setPassword("123456");
+            SAXReader reader = new SAXReader();
+            String path = Thread.currentThread().getContextClassLoader().getResource("").toString();
+            path = path.replace("file:", "");
+            path = path.replace("classes/", "");
+            path = path.substring(1);
+            path += "mysql-connection-pool-config.xml";
+
+
+            /**
+             * xml Demo:
+             * classmame:com.mysql.jdbc.Driver
+             * url:jdbc:mysql:///woc
+             * username:root
+             * password:123456
+             */
+            Document document = reader.read(new File("/" + path));
+            Element node = document.getRootElement();
+            Iterator<Element> iterator = node.elementIterator();
+            while (iterator.hasNext()) {
+                Element e = iterator.next();
+                switch (e.getName()) {
+                    case "classmame":
+                        dataSource.setDriverClass(e.getText());
+                        break;
+                    case "url":
+                        dataSource.setJdbcUrl(e.getText());
+                        break;
+                    case "username":
+                        dataSource.setUser(e.getText());
+                        break;
+                    case "password":
+                        dataSource.setPassword(e.getText());
+                        break;
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

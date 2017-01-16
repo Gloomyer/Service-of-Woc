@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql-config>
+    <classmame>com.mysql.jdbc.Driver</classmame>
+    <url>jdbc:mysql:///woc</url>
+    <username>root</username>
+    <password>123456</password>
+</sql-config>
+
+
