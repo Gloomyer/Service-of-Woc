@@ -6,6 +6,7 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import javax.sql.DataSource;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,7 +29,6 @@ public class JDBCUtils {
             path = path.replace("classes/", "");
             path = path.substring(1);
             path += "mysql-connection-pool-config.xml";
-
 
             /**
              * xml Demo:
@@ -60,6 +60,15 @@ public class JDBCUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 获取数据库连接池
+     *
+     * @return
+     */
+    public static DataSource getDataSorce() {
+        return dataSource;
     }
 
 

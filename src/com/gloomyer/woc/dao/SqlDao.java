@@ -4,9 +4,9 @@ import com.gloomyer.woc.model.ArticleModel;
 import com.gloomyer.woc.model.CategoryModel;
 import com.gloomyer.woc.model.FileModel;
 import com.gloomyer.woc.utils.JDBCUtils;
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -45,54 +45,60 @@ public class SqlDao {
      * 获取所有类别
      */
     public List<CategoryModel> getCateGorys() {
-        List<CategoryModel> list = new ArrayList<>();
-        Connection conn = JDBCUtils.getConn();
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        if (conn != null) {
-            try {
-                pst = conn.prepareStatement("select * from t_category;");
-                rs = pst.executeQuery();
-                while (rs.next()) {
-                    CategoryModel category = new CategoryModel();
-                    category.setCategoryId(rs.getInt(1));
-                    category.setCategoryName(rs.getString(2));
-                    list.add(category);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSorce());
+        List<CategoryModel> list = null;
+        try {
+            list = qr.query("select * from t_category;", new ResultSetHandler<List<CategoryModel>>() {
 
-        JDBCUtils.close(conn, pst, rs);
+                @Override
+                public List<CategoryModel> handle(ResultSet rs) throws SQLException {
+
+                    List<CategoryModel> list = new ArrayList<>();
+                    while (rs.next()) {
+
+                        CategoryModel info = new CategoryModel();
+                        info.setCategoryId(rs.getInt(1));
+                        info.setCategoryName(rs.getString(2));
+
+                        list.add(info);
+                    }
+
+                    return list;
+                }
+            });
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return list;
     }
 
     public void getArticles(CategoryModel category) {
-        List<ArticleModel> list = new ArrayList<>();
-        Connection conn = JDBCUtils.getConn();
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        if (conn != null) {
-            try {
-                pst = conn.prepareStatement("select * from t_article where categoryId = " + category.getCategoryId() + ";");
-                rs = pst.executeQuery();
-                while (rs.next()) {
-                    ArticleModel article = new ArticleModel();
-                    article.setaId(rs.getInt(1));
-                    article.setTitle(rs.getString(3));
-                    article.setDesc(rs.getString(4));
-                    article.setImg(rs.getString(5));
-                    article.setUrl(rs.getString(6));
-                    list.add(article);
-                }
-                category.setArticles(list);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
 
-        JDBCUtils.close(conn, pst, rs);
+        QueryRunner qr = new QueryRunner(JDBCUtils.getDataSorce());
+        List<ArticleModel> list = null;
+        try {
+            list = qr.query("select * from t_article where categoryId = ?", new ResultSetHandler<List<ArticleModel>>() {
+
+                @Override
+                public List<ArticleModel> handle(ResultSet rs) throws SQLException {
+                    List<ArticleModel> list = new ArrayList<>();
+                    while (rs.next()) {
+                        ArticleModel article = new ArticleModel();
+                        article.setaId(rs.getInt(1));
+                        article.setTitle(rs.getString(3));
+                        article.setDesc(rs.getString(4));
+                        article.setImg(rs.getString(5));
+                        article.setUrl(rs.getString(6));
+                        list.add(article);
+                    }
+                    return list;
+                }
+            }, category.getCategoryId());
+        } catch (SQLException e) {
+            list = new ArrayList<>();
+            e.printStackTrace();
+        }
+        category.setArticles(list);
     }
 
     public List<CategoryModel> getAllInfo() {
@@ -109,161 +115,119 @@ public class SqlDao {
     }
 
     public boolean addCategory(String cName) {
-        Connection conn = JDBCUtils.getConn();
-        PreparedStatement pst = null;
         boolean result = false;
-        if (conn != null) {
-            try {
-                pst = conn.prepareStatement("INSERT INTO t_category(cName) VALUES(?);");
-                pst.setString(1, cName);
-
-                int line = pst.executeUpdate();
-                if (line > 0)
-                    result = true;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSorce());
+        try {
+            int update = queryRunner.update("INSERT INTO t_category(cName) VALUES(?)", cName);
+            if (update > 0)
+                result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        JDBCUtils.close(conn, pst, null);
         return result;
     }
 
     public boolean deleteCategory(int cId) {
-        Connection conn = JDBCUtils.getConn();
-        PreparedStatement pst = null;
         boolean result = false;
-        if (conn != null) {
-            try {
-                pst = conn.prepareStatement("DELETE FROM t_category WHERE cId = ?;");
-                pst.setInt(1, cId);
 
-                int line = pst.executeUpdate();
-                if (line > 0)
-                    result = true;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSorce());
+        try {
+            int update = queryRunner.update("DELETE FROM t_category WHERE cId = ?", cId);
+            if (update > 0)
+                result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        JDBCUtils.close(conn, pst, null);
         return result;
     }
 
     public boolean editCategory(int cId, String cName) {
-        Connection conn = JDBCUtils.getConn();
-        PreparedStatement pst = null;
         boolean result = false;
-        if (conn != null) {
-            try {
-                pst = conn.prepareStatement("UPDATE t_category set cName = ? WHERE cId = ?;");
-                pst.setString(1, cName);
-                pst.setInt(2, cId);
-                int line = pst.executeUpdate();
-                if (line > 0)
-                    result = true;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
+
+        QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSorce());
+        try {
+            int update = queryRunner.update("UPDATE t_category set cName = ? WHERE cId = ?", cName, cId);
+            if (update > 0)
+                result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        JDBCUtils.close(conn, pst, null);
         return result;
     }
 
     public boolean deleteArticle(int aId) {
-        Connection conn = JDBCUtils.getConn();
-        PreparedStatement pst = null;
         boolean result = false;
-        if (conn != null) {
-            try {
-                pst = conn.prepareStatement("SELECT * FROM t_article WHERE  id = ?;");
-                pst.setInt(1, aId);
-                ResultSet rs = pst.executeQuery();
-                if (rs.next()) {
-                    deleteFile(rs.getString("file"));
-                }
-                JDBCUtils.close(null, pst, rs);
-                pst = conn.prepareStatement("DELETE FROM t_article WHERE id = ?;");
-                pst.setInt(1, aId);
 
-                int line = pst.executeUpdate();
-                if (line > 0)
-                    result = true;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSorce());
+        try {
+            int update = queryRunner.update("DELETE FROM t_article WHERE id = ?", aId);
+            if (update > 0)
+                result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        JDBCUtils.close(conn, pst, null);
         return result;
     }
 
 
     public boolean addFileInfoToDatabase(FileModel file) {
-        Connection conn = JDBCUtils.getConn();
-        PreparedStatement pst = null;
         boolean result = false;
-        if (conn != null) {
-            try {
-                pst = conn.prepareStatement("INSERT INTO t_file(uuid,name,file) VALUES (?, ?, ?);");
-                pst.setString(1, file.getUuid());
-                pst.setString(2, file.getFileName());
-                pst.setString(3, file.getFilePath());
-                int line = pst.executeUpdate();
-                if (line > 0)
-                    result = true;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
+        QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSorce());
+        try {
+            int update = queryRunner.update("INSERT INTO t_file(uuid,name,file) VALUES (?, ?, ?)",
+                    file.getUuid(),
+                    file.getFileName(),
+                    file.getFilePath());
+            if (update > 0)
+                result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        JDBCUtils.close(conn, pst, null);
         return result;
     }
 
     public boolean addArticle(int cId, String title, String desc, String img, String uuid) {
 
-        Connection conn = JDBCUtils.getConn();
-        PreparedStatement pst = null;
         boolean result = false;
-        if (conn != null) {
-            try {
-                pst = conn.prepareStatement("INSERT INTO t_article(categoryId,title,c_desc,img,file) VALUES (?, ?, ?, ?, ?);");
-                pst.setInt(1, cId);
-                pst.setString(2, title);
-                pst.setString(3, desc);
-                pst.setString(4, img);
-                pst.setString(5, uuid);
-                int line = pst.executeUpdate();
-                if (line > 0)
-                    result = true;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
+        QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSorce());
+        try {
+            int update = queryRunner
+                    .update("insert into t_article(categoryId,title,c_desc,img,file) values(?, ?, ?, ?, ?)",
+                            cId,
+                            title,
+                            desc,
+                            img,
+                            uuid);
+            if (update > 0)
+                result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        JDBCUtils.close(conn, pst, null);
         return result;
     }
 
     public boolean deleteFile(String uuid) {
-        Connection conn = JDBCUtils.getConn();
-        PreparedStatement pst = null;
+
+
         boolean result = false;
-        if (conn != null) {
-            try {
-                pst = conn.prepareStatement("DELETE FROM t_file WHERE uuid = ?;");
-                pst.setString(1, uuid);
-                int line = pst.executeUpdate();
-                if (line > 0)
-                    result = true;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
+        QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSorce());
+        try {
+            int update = queryRunner.update("DELETE FROM t_file WHERE uuid = ?", uuid);
+            if (update > 0)
+                result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        JDBCUtils.close(conn, pst, null);
         return result;
     }
 }
